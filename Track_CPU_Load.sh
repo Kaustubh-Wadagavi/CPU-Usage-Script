@@ -1,5 +1,5 @@
 #!/bin/bash
-configuredThreshold=50.0
+configuredThreshold=80.0
 cpuUse=$(cat /proc/loadavg | awk '{print $1}')
 
 echo $cpuUse %
@@ -12,8 +12,7 @@ then
 	echo "+-------------------------------------------------------------+">>output.txt
 	echo "+ Top Running Processes                                       +">>output.txt
   echo "+-------------------------------------------------------------+">>output.txt
-  echo "$(ps -eo pid,ppid,cmd,%cpu --sort=-%cpu |head -5)">>output.txt
-	echo "$4"
+  echo "$(ps -eo pid,ppid,cmd,%cpu --sort=-%cpu |head -10)">>output.txt
 	echo "">>output.txt
 else
 	echo "CPU Usage doesnot exceeded configured threshold"
